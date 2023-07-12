@@ -34,5 +34,7 @@
         </table>
 
         <a href="/add">추가</a>
+        <br/>
+        @Value 테스트 결과 : ${test }
 	</body>
 </html>

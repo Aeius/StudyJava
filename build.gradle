@@ -23,22 +23,22 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	//implementation 'org.springframework.boot:spring-boot-starter-security'
-	//implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	//implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
-	compileOnly 'org.projectlombok:lombok'
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	annotationProcessor 'org.projectlombok:lombok'
-	//providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	//testImplementation 'org.springframework.security:spring-security-test'
-	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
-	implementation 'javax.servlet:jstl'
-	runtimeOnly 'org.postgresql:postgresql'
-	implementation group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
-	implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
+	implementation "org.springframework.boot:spring-boot-starter-data-jpa:${jpaVersion}"
+	//implementation "org.springframework.boot:spring-boot-starter-security"
+	//implementation "org.springframework.boot:spring-boot-starter-thymeleaf"
+	implementation "org.springframework.boot:spring-boot-starter-web:${bootStarterVersion}"
+	//implementation "org.thymeleaf.extras:thymeleaf-extras-springsecurity5"
+	compileOnly "org.projectlombok:lombok:${lombokVersion}"
+	developmentOnly "org.springframework.boot:spring-boot-devtools:${devtoolsVersion}"
+	annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+	//providedRuntime "org.springframework.boot:spring-boot-starter-tomcat"
+	testImplementation "org.springframework.boot:spring-boot-starter-test:${bootStarterVersion}"
+	//testImplementation "org.springframework.security:spring-security-test"
+	implementation "org.apache.tomcat.embed:tomcat-embed-jasper:${jasperVersion}"
+	implementation "javax.servlet:jstl:${jstlVersion}"
+	runtimeOnly "org.postgresql:postgresql:${postgresqlVersion}"
+	implementation group: 'io.springfox', name: 'springfox-swagger2', version: ${swaggerVersion}
+	implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: ${swaggerVersion}
 }
 
 tasks.named('test') {
