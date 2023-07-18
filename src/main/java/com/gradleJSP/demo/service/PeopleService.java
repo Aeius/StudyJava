@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,7 +17,9 @@ public class PeopleService {
     private PeopleRepository peopleRepository;
 
     public List<People> selectAll(){
-        return peopleRepository.findAll();
+        List<People> list = peopleRepository.findAll();
+        list.sort(new PeopleComparator()); // num기준 오름차순 정렬
+        return list;
     }
 
     @Transactional
@@ -33,6 +36,7 @@ public class PeopleService {
     public void delete(Long id) {
         peopleRepository.deleteById(id);
     }
+
     @Transactional
     public void update(Long id, People people) {
         People p = peopleRepository.findById(id).get();
@@ -48,7 +52,17 @@ public class PeopleService {
         return peopleRepository.getColCount();
     }
 
-
+    class PeopleComparator implements Comparator<People> {
+        @Override
+        public int compare(People o1, People o2) {
+            if(o1.getNum() > o2.getNum()) {
+                return 1;
+            } else if (o1.getNum() < o2.getNum()){
+                return -1;
+            }
+            return 0;
+        }
+    }
 
 
 }

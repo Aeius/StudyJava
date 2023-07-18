@@ -12,8 +12,14 @@
 
 <!DOCTYPE html>
 <html> 
-	<head> 
+	<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     	<meta charset="utf-8">
+    	<style>
+            #modal {
+                display:none;
+            }
+    	</style>
 <title>나만의 테스트 페이지</title>
 	</head> 
 	<body>
@@ -23,12 +29,15 @@
                 <th>Num</th>
                 <th>Name</th>
                 <th>Age</th>
+                <th></th>
             </tr>
             <c:forEach var="people" items="${peopleList}">
             <tr>
                 <td>${people.num}</td>
                 <td>${people.name}</td>
                 <td>${people.age}</td>
+                <td><button type="button" onclick="peopleUpdate(${people.num}, '${people.name}', ${people.age})">수정</button></td>
+                <td><button type="button" onclick="peopleDelete(${people.num})">삭제</button></td>
             </tr>
             </c:forEach>
         </table>
@@ -37,5 +46,43 @@
         <br/>
         @Value 테스트 결과 : ${test } <br>
         @Value 테스트 결과 : ${thunder }
+
+        <!-- modal -->
+        <div id="modal">
+            <h4>수정</h4>
+            <form action="add" method="post">
+                num : <input type="text" name="num" id="num" readonly/>
+                <br>
+                name : <input type="text" name="name" id="name" />
+                <br>
+                age : <input type="tel" name="age" id="age" />
+                <br>
+                <button type="submit">확정</button>
+                <button type="button" class="close-modal">닫기</button>
+            </form>
+        </div>
 	</body>
+	<script>
+        function peopleDelete(num) {
+	        var ajax = $.ajax(){
+	            type: 'post',
+	            url: 'http://localhost:8080/delete/'+num,
+	        }
+	        ajax.done(function(){
+	            alert(num + '번 삭제 성공!')
+	        })
+	    }
+
+	    function peopleUpdate(num, name, age) {
+	        console.log('update')
+            $('#modal').css('display','block')
+            $('#num').val(num)
+            $('#name').val(name)
+            $('#age').val(age)
+	    }
+
+	    $('.close-modal').on('click', function() {
+	        $('#modal').css('display','none')
+	    })
+	</script>
 </html>

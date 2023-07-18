@@ -1,12 +1,9 @@
 package com.gradleJSP.demo.entity;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiParam;
-import lombok.AllArgsConstructor;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 
@@ -17,13 +14,13 @@ public class People {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @ApiParam(name = "index", readOnly = true)
+    @Schema(description = "인덱스")
     private long num;
     @Column
-    @ApiParam(name = "이름", example = "세글자")
+    @Schema(description = "이름")
     private String name;
     @Column
-    @ApiParam(name = "나이", example = "20")
+    @Schema(description = "나이")
     private int age;
 
     @Builder
