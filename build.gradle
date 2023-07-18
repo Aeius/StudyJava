@@ -34,11 +34,14 @@ dependencies {
 	//providedRuntime "org.springframework.boot:spring-boot-starter-tomcat"
 	testImplementation "org.springframework.boot:spring-boot-starter-test:${bootStarterVersion}"
 	//testImplementation "org.springframework.security:spring-security-test"
-	implementation "org.apache.tomcat.embed:tomcat-embed-jasper:${jasperVersion}"
-	implementation "javax.servlet:jstl:${jstlVersion}"
+	implementation "org.apache.tomcat.embed:tomcat-embed-jasper"
+	implementation "javax.servlet:jstl"
 	runtimeOnly "org.postgresql:postgresql:${postgresqlVersion}"
-	implementation group: 'io.springfox', name: 'springfox-swagger2', version: ${swaggerVersion}
-	implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: ${swaggerVersion}
+	implementation group: 'io.springfox', name: 'springfox-swagger2', version: "${swaggerVersion}"
+	implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: "${swaggerVersion}"
+	// https://mvnrepository.com/artifact/org.apache.poi/poi
+	implementation "org.apache.poi:poi:${apachePoiVersion}"
+
 }
 
 tasks.named('test') {

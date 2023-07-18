@@ -21,5 +21,10 @@ spring:
     view:
       prefix: /WEB-INF/views/
       suffix: .jsp
+    # swagger
     pathmatch:
       matching-strategy: ant_path_matcher
+
+# @Value
+test: Test Complete
+thunder: like Thunder

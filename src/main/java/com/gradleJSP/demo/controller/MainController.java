@@ -2,7 +2,9 @@ package com.gradleJSP.demo.controller;
 
 import com.gradleJSP.demo.entity.People;
 import com.gradleJSP.demo.service.PeopleService;
+import com.gradleJSP.demo.util.PoiUtil;
 import io.swagger.annotations.ApiOperation;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
@@ -23,12 +25,16 @@ public class MainController {
 
     @Value("${test}")
     private String test;
+    @Value("${thunder}")
+    private String thunder;
 
     @GetMapping("/")
     public String index(Model model) {
         List<People> list = peopleService.selectAll();
         model.addAttribute("peopleList", list);
         model.addAttribute("test", test);
+        model.addAttribute("thunder", thunder);
+        PoiUtil.CreateExcelSheet(list, peopleService.getRowCount(), peopleService.getColCount());
         return "index";
     }
 

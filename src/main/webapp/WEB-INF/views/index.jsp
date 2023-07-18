@@ -14,7 +14,7 @@
 <html> 
 	<head> 
     	<meta charset="utf-8">
-<title>웹페이지 제목</title>
+<title>나만의 테스트 페이지</title>
 	</head> 
 	<body>
         <h1>index page</h1>
@@ -35,6 +35,7 @@
 
         <a href="/add">추가</a>
         <br/>
-        @Value 테스트 결과 : ${test }
+        @Value 테스트 결과 : ${test } <br>
+        @Value 테스트 결과 : ${thunder }
 	</body>
 </html>
