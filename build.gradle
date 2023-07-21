@@ -37,6 +37,7 @@ dependencies {
 	implementation group: 'org.springdoc', name: 'springdoc-openapi-ui', version: '1.6.7'
 //	 https://mvnrepository.com/artifact/org.apache.poi/poi
 	implementation "org.apache.poi:poi:${apachePoiVersion}"
+	implementation "org.apache.poi:poi-ooxml:${apachePoiVersion}"
 
 }
 

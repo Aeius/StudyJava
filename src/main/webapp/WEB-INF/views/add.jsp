@@ -20,6 +20,7 @@
             age : <input type="tel" name="age" />
             <br>
             <button type="submit">추가</button>
+            <input type="hidden" name="${ _csrf.parameterName }" value="${ _csrf.token }">
         </form>
 	</body>
 </html>

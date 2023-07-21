@@ -73,7 +73,7 @@ public class SecurityConfig {
                 // 로그아웃
                 .logout(logout -> logout
                         .logoutUrl("/logout")
-                        .logoutSuccessUrl("/")
+                        .logoutSuccessUrl("/login")
                         .invalidateHttpSession(true) // 세션 초기화
                         .deleteCookies("JSESSIONID", "remember-me") // 쿠키 삭제
                         // Clear-Site-Data를 사용하여 로그아웃 -> 세션 쿠키를 포함한 모든 항목 정리됨

@@ -16,6 +16,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -39,14 +41,12 @@ public class MainController {
             @ApiResponse(responseCode = "200", description = "successful operation", content = @Content(schema = @Schema(implementation = People.class))),
             @ApiResponse(responseCode = "400", description = "bad request operation", content = @Content(schema = @Schema(implementation = People.class)))
     })
-
     @GetMapping("/")
     public String index(Model model) {
         List<People> list = peopleService.selectAll();
         model.addAttribute("peopleList", list);
         model.addAttribute("test", test);
         model.addAttribute("thunder", thunder);
-        PoiUtil.createExcelSheet(list, peopleService.getRowCount(), peopleService.getColCount());
         return "index";
     }
 
@@ -77,6 +77,15 @@ public class MainController {
     @PostMapping("/delete/{num}")
     public String delete(@PathVariable Long num) {
         peopleService.delete(num);
+        return "redirect:/";
+    }
+
+    @Operation(summary = "엑셀 파일화", description = "엑셀 파일 다운로드")
+    @PostMapping("/excel")
+    public String excel(){
+        List<People> list = peopleService.selectAll();
+        PoiUtil.createXls(list, peopleService.getRowCount(), peopleService.getColCount());
+        PoiUtil.createXslx(list, peopleService.getRowCount(), peopleService.getColCount());
         return "redirect:/";
     }
 

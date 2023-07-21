@@ -43,12 +43,17 @@
         </table>
 
         <a href="/add">추가</a>
+        <form action="excel" method="post">
+            <button type="submit">엑셀 파일 다운로드</button>
+            <input type="hidden" name="${ _csrf.parameterName }" value="${ _csrf.token }">
+        </form>
         <br/>
         @Value 테스트 결과 : ${test } <br>
         @Value 테스트 결과 : ${thunder }
 
         <form action="logout" method="post">
             <button type="submit">로그아웃</button>
+            <input type="hidden" name="${ _csrf.parameterName }" value="${ _csrf.token }">
         </form>
         <!-- modal -->
         <div id="modal">
@@ -62,17 +67,20 @@
                 <br>
                 <button type="submit">확정</button>
                 <button type="button" class="close-modal">닫기</button>
+                <input type="hidden" name="${ _csrf.parameterName }" value="${ _csrf.token }">
             </form>
         </div>
 	</body>
 	<script>
         function peopleDelete(num) {
-	        var ajax = $.ajax(){
+	        var ajax = $.ajax({
 	            type: 'post',
 	            url: 'http://localhost:8080/delete/'+num,
-	        }
+	            data: {"${ _csrf.parameterName }" : "${ _csrf.token }"},
+	        })
 	        ajax.done(function(){
-	            alert(num + '번 삭제 성공!')
+	            alert(num + '번 삭제 성공!');
+	            location.replace("/");
 	        })
 	    }
 
