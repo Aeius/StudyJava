@@ -47,6 +47,9 @@
         @Value 테스트 결과 : ${test } <br>
         @Value 테스트 결과 : ${thunder }
 
+        <form action="logout" method="post">
+            <button type="submit">로그아웃</button>
+        </form>
         <!-- modal -->
         <div id="modal">
             <h4>수정</h4>

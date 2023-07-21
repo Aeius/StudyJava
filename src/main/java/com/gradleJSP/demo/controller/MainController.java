@@ -46,7 +46,7 @@ public class MainController {
         model.addAttribute("peopleList", list);
         model.addAttribute("test", test);
         model.addAttribute("thunder", thunder);
-        PoiUtil.CreateExcelSheet(list, peopleService.getRowCount(), peopleService.getColCount());
+        PoiUtil.createExcelSheet(list, peopleService.getRowCount(), peopleService.getColCount());
         return "index";
     }
 

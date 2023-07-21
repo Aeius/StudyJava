@@ -24,14 +24,11 @@ repositories {
 
 dependencies {
 	implementation "org.springframework.boot:spring-boot-starter-data-jpa:${jpaVersion}"
-	//implementation "org.springframework.boot:spring-boot-starter-security"
-	//implementation "org.springframework.boot:spring-boot-starter-thymeleaf"
+	implementation "org.springframework.boot:spring-boot-starter-security"
 	implementation "org.springframework.boot:spring-boot-starter-web:${bootStarterVersion}"
-	//implementation "org.thymeleaf.extras:thymeleaf-extras-springsecurity5"
 	compileOnly "org.projectlombok:lombok:${lombokVersion}"
 	developmentOnly "org.springframework.boot:spring-boot-devtools:${devtoolsVersion}"
 	annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
-	//providedRuntime "org.springframework.boot:spring-boot-starter-tomcat"
 	testImplementation "org.springframework.boot:spring-boot-starter-test:${bootStarterVersion}"
 	//testImplementation "org.springframework.security:spring-security-test"
 	implementation "org.apache.tomcat.embed:tomcat-embed-jasper"

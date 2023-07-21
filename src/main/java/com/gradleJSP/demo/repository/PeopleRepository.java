@@ -9,5 +9,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PeopleRepository extends JpaRepository<People, Long> {
     @Query(value = "SELECT COUNT(*) FROM information_schema.columns WHERE table_name='people'", nativeQuery = true)
-    public Long getColCount();
+    Long getColCount();
 }

@@ -16,7 +16,7 @@ import java.util.List;
 
 public class PoiUtil {
 
-    public static void CreateExcelSheet(List<People> list, long rowCount, long colCount){
+    public static void createExcelSheet(List<People> list, long rowCount, long colCount){
         // 엑셀 시트 생성
         Workbook workbook = new HSSFWorkbook();
         Sheet sheet = workbook.createSheet("people data");
@@ -52,7 +52,6 @@ public class PoiUtil {
                 throw new RuntimeException(e);
             }
         }
-
-
     }
+
 }
