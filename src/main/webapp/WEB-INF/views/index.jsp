@@ -82,6 +82,7 @@
 	            alert(num + '번 삭제 성공!');
 	            location.replace("/");
 	        })
+            
 	    }
 
 	    function peopleUpdate(num, name, age) {

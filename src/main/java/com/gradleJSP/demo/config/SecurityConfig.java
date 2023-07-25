@@ -5,8 +5,10 @@ import com.gradleJSP.demo.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authorization.AuthorizationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.SessionManagementConfigurer;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -46,6 +48,7 @@ public class SecurityConfig {
                 // 인증 필터
                 .authorizeHttpRequests(authorize -> authorize
                         .antMatchers("/register").permitAll()
+                        .antMatchers("/login").hasAnyRole("anonymous")
                         .anyRequest().authenticated()
                 )
 
@@ -171,10 +174,11 @@ public class SecurityConfig {
             UserDetails userDetails = User.builder()
                     .username(account.get().getUsername())
                     .password(account.get().getPassword())
-                    .roles(account.get().getRole())
+                    .authorities(account.get().getRole())
                     .build();
             return userDetails;
         }
+
     }
 
     /**

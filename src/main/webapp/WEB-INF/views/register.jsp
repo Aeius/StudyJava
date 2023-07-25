@@ -20,7 +20,6 @@
             password : <input type="password" id="password" name="password"> <br>
             role : <input type="radio" class="role" name="role" value="ADMIN" checked >ADMIN <input type="radio" class="role" name="role" value="USER" >USER <br>
             <button type="submit">가입</button>
-
             <input type="hidden" name="${ _csrf.parameterName }" value="${ _csrf.token }">
         </form>
         <a href="/login">로그인으로</a>
